@@ -1,0 +1,55 @@
+body {
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 24px;
+}
+
+.heading {
+    color: #3e1f47;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 52px;
+}
+
+h3 {
+    font-size: 44px;
+}
+
+.content {
+    color: #4d194d;
+}
+
+#splashCanvas {
+    margin-top: 175px;
+}
+
+#splashContent {
+    padding: 30px 0px 0px 0px;
+}
+
+#splashScreenCanvas {
+    position:absolute;
+    z-index:-1;
+}
+
+#splashScreenList {
+    list-style: none;
+    padding: 0;
+}
+
+.btn {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px;
+}
+
+.pick-hero {
+    background: none;
+    border: none;
+}
+
+#heroSelectionContent {
+    padding: 50px;
+}
