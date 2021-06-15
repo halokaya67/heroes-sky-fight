@@ -21,11 +21,12 @@ h3 {
 }
 
 #splashCanvas {
-    margin-top: 175px;
+    
 }
 
 #splashContent {
     padding: 30px 0px 0px 0px;
+    margin-top: 175px;
 }
 
 #splashScreenCanvas {
@@ -48,8 +49,19 @@ h3 {
 .pick-hero {
     background: none;
     border: none;
+    height: 275px;
 }
 
 #heroSelectionContent {
     padding: 50px;
+    margin-top: 175px;
+}
+
+#gameOverContent {
+    padding: 100px;
+    margin-top: 175px;
+}
+
+#gameOverContent h1 {
+    font-size: 120px;
 }

@@ -1,56 +1,186 @@
 let canvas = document.querySelector('#splashScreenCanvas');
 let ctx = canvas.getContext('2d');
 
-let pickHero = document.querySelector('#pickHero');
+let pickHeroButton = document.querySelector('#pickHero');
 let splashContent = document.querySelector('#splashContent');
 let heroSelectionContent = document.querySelector('#heroSelectionContent');
+let boyGreenHero = document.querySelector('#boyGreen');
+let boyPurpleHero = document.querySelector('#boyPurple');
+let girlPinkHero = document.querySelector('#girlPink');
+let girlYellowHero = document.querySelector('#girlYellow');
+let startGameButton = document.querySelector('#startGame');
+let gameOverContent = document.querySelector('#gameOverContent');
+let restartGameButton = document.querySelector('#restartGame');
+let gameOverMessage = document.querySelector('#gameOverMessage');
+let gameOverMessageTwo = document.querySelector('#gameOverMessageTwo');
+let congratsMessage = document.querySelector('#congratsMessage');
+let congratsMessageTwo = document.querySelector('#congratsMessageTwo');
+
+let pickedHero = null;
+let positionX = 600, positionY = 600;
+let isRight = false, isLeft = false;
+let incrX = 2;
+let isFired = false;
+let isGameOver = false;
+let isWon = false;
+let heroHp = 100;
+let bossHp = 100;
+let count = null;
+let mobSpeed = 2;
+let controlSpeed = 5;
 
 let bg = new Image();
-bg.src = './images/bg-1.png';
+bg.src = './images/bg.png';
 
 let bgCity = new Image();
-bgCity.src = './images/bg-bottom-2.png'
+bgCity.src = './images/bg-bottom.png'
 
 let bgCloud = new Image();
-bgCloud.src = './images/bg-cloud-1.png';
+bgCloud.src = './images/bg-cloud.png';
+
+let boyGreen = new Image();
+boyGreen.src = './images/hero-boy-green.png';
+
+let boyPurple = new Image();
+boyPurple.src = './images/hero-boy-purple.png';
+
+let girlPink = new Image();
+girlPink.src = './images/hero-girl-pink.png';
+
+let girlYellow = new Image();
+girlYellow.src = './images/hero-girl-yellow.png';
+
+let mob = new Image();
+mob.src = './images/enemy.png';
+
+let boss = new Image();
+boss.src = './images/boss.png';
+
+let innocent = new Image();
+innocent.src = './images/innocent.png';
+
+let magic = new Image();
+magic.src = './images/magic.png';
+
+let fire = new Image();
+fire.src = './images/fire.png';
+
 
 let intervalId = 0;
 let clouds = [
     {x: 1300, y: 100},
-    {x: 2000, y: 300},
+    {x: 2000, y: 300}
+]
+
+let mobs = [
+    {x: 800, y: -100},
+    {x: 400, y: -600},
+    {x: 700, y: -1100},
+    {x: 200, y: -1600},
+    {x: 100, y: -2100},
+]
+
+let innocents = [
+    {x: 400, y: -2500}
+]
+
+let bosses = [
+    {x: 50, y: 50}
+]
+
+let magics = {x: (positionX + 35), y: (positionY - 10)}
+
+let fires = [
+    {x: 900, y: -100},
+    {x: 700, y: -600},
+    {x: 500, y: -1100},
+    {x: 300, y: -1600},
+    {x: 100, y: -2100},
+    {x: 100, y: -2600},
 ]
 
 function drawSplashScreen() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bg, 0, 0);
 
-    for (let i = 0; i < clouds.length; i++) {
-        ctx.drawImage(bgCloud, clouds[i].x, clouds[i].y);
-        clouds[i].x -= 1;
-
-        if (clouds[i].x + bgCloud.width < 0) {
-            clouds[i] = {
-                x: 1300,
-                y: Math.floor(Math.random() * (canvas.height - 200))
-            }
-        }
-    }
+    drawClouds();
 
     ctx.drawImage(bgCity, 0, 400);
     ctx.drawImage(bgCity, 820, 400);
-
     intervalId = requestAnimationFrame(drawSplashScreen);
 }
 
 function drawPickHeroScreen() {
     splashContent.classList.add('d-none');
-    heroSelectionContent.classList.remove('d-none');
-    
+    heroSelectionContent.classList.remove('d-none');    
 }
 
 window.addEventListener('load', () => {
     drawSplashScreen();
 
-    pickHero.addEventListener('click', () => {
+    pickHeroButton.addEventListener('click', () => {
         drawPickHeroScreen();
+    })
+
+    startGameButton.addEventListener('click', () => {
+        if (pickedHero === null) {
+            alert('Please pick a hero!');
+        } else {
+            cancelAnimationFrame(intervalId);
+            drawGameScreen();
+        }
+    })
+
+    restartGameButton.addEventListener('click', () => {
+        cancelAnimationFrame(intervalId);
+        splashContent.classList.remove('d-none');
+        gameOverContent.classList.add('d-none');
+        isGameOver = false;
+        isWon = false;
+        pickedHero = null;
+        heroHp = 100;
+        count = null;
+        mobSpeed = 2;
+        controlSpeed = 5;
+        miss = null;
+        drawSplashScreen();
+    });
+
+    boyGreenHero.addEventListener('click', () => {
+        pickedHero = 'boyGreen';
+    })
+
+    boyPurpleHero.addEventListener('click', () => {
+        pickedHero = 'boyPurple';
+    })
+
+    girlPinkHero.addEventListener('click', () => {
+        pickedHero = 'girlPink';
+    })
+
+    girlYellowHero.addEventListener('click', () => {
+        pickedHero = 'girlYellow';
+    })
+
+    document.addEventListener('keydown', (event) => {
+        if (event.code === 'ArrowRight') {
+            isRight = true;
+            isLeft = false;
+        }
+        if (event.code === 'ArrowLeft') {
+            isLeft = true;
+            isRight = false;  
+        }
+    });
+
+    document.addEventListener('keyup', () => {
+            isLeft = false;
+            isRight = false;  
+    })
+
+    document.addEventListener('keydown', (event) => {
+        if (event.code === 'Space') {
+            isFired = true;
+        }
     })
 })

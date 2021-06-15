@@ -2,15 +2,15 @@
 
 ## Description
 
-Heroes Sky Fight is an arcade game in which the player is trying to avoid or kill the enemies and catch the innocents falling down. The player needs to move horizontally to do all those things mentioned above. Also sometimes there will be med-packs on the screen to heal the player. After killing or avoiding certain amount of enemies there will be a boss attacking the player. In order to finish the game the player needs to kill 3 bosses.
+Heroes Sky Fight is an arcade game in which the player is trying to avoid or kill the enemies and catch the innocents falling down. The player needs to move horizontally to do all those things mentioned above. Also there will be med-packs on the screen to heal the player. After saving innocents a boss fight will happen. In order to finish the game, the player needs to kill the boss.
 
 ## MVP (DOM - Canvas)
 
 - There will be a charecter moving horizontally.
 - There will be enemies coming down from top of the screen in random positions.
-- After avoiding 3 enemies an innocent will fall down from top of the screen randomly.
+- There will be an innocent falling down from top of the screen randomly.
 - A boss will come and start fighting after the player saves 3 innocents.
-- If the player misses 3 innocents or hit by enemies until the hp is 0, the game will be over.
+- If the player hit by enemies until the hp is 0, the game will be over.
 
 ## Backlog
 
@@ -25,38 +25,31 @@ Heroes Sky Fight is an arcade game in which the player is trying to avoid or kil
 ## Data structure
 
 # splashScreen.js
-
 - drawSplashScreen() {}
 - drawPickHeroScreen() {}
 
 # gameScreen.js
-
-- drawGameScreen() {}.
-- startLoop() {}
-- checkCollisions() {}
-- addEnemy() {}
-- addInnocent() {}
+- drawGameScreen() {}
 
 # gameOverScreen.js
-
 - drawGameOverScreen() {}
 
-# characters.js
+# clouds.js
+- drawClouds() {}
 
-- draw() {}
-- move() {}
-- shoot() {}
-- chechScreenCollision() {}
+# heroes.js
+- drawHeroes() {}
+- moveHeroes() {}
+- drawMagic() {}
 
-# enemy.js
-
-- draw() {}
-- move() {}
+# mobs.js
+- drawMobs() {}
 
 # innocent.js
+- drawInnocent() {}
 
-- draw() {}
-- move() {}
+# boss.js
+- drawBossScreen() {}
 
 ## States y States Transitions
 

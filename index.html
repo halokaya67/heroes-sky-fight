@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Reenie+Beanie&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Heroes Sky Fight</title>
 </head>
+
 <body>
     <div class="container" id="splashCanvas">
         <canvas id="splashScreenCanvas" width="1300" height="600"></canvas>
     </div>
     <div class="container text-center d-flex flex-column justify-content-center w-50" id="splashContent">
         <h1 class=" heading pb-3">Heroes Sky Fight</h1>
-        <p class="content pb-3">You are the last hope of the human race! Pick your hero and start fighting against enemies trying to kill human race! Move your hero to avoid or kill the enemies, save the falling humans, beat the bosses and save the human race. Don't forget to look around, some people might want to help you by leaving med-packs around!</p>
+        <p class="content pb-3">You are the last hope of the human race! Pick your hero and start fighting against
+            enemies trying to kill human race! Move your hero to avoid or kill the enemies, save the falling humans,
+            beat the bosses and save the human race. Don't forget to look around, some people might want to help you by
+            leaving med-packs around!</p>
         <h3 class="pb-3 heading">Controls</h3>
         <ul class="content pb-2" id="splashScreenList">
             <li>Arrow Left/Right - Moves the hero</li>
@@ -27,23 +34,41 @@
     <div class="container text-center d-flex flex-column justify-content-center w-50 d-none" id="heroSelectionContent">
         <h1 class="heading pb-3">Pick Your Hero!</h1>
         <div>
-            <button class="btn p-4 pick-hero">
+            <button class="btn p-4 pick-hero" id="boyGreen">
                 <img src="./images/hero-boy-green.png" alt="boy-green">
             </button>
-            <button class="btn p-4 pick-hero">
+            <button class="btn p-4 pick-hero" id="boyPurple">
                 <img src="./images/hero-boy-purple.png" alt="boy-purple">
             </button>
-            <button class="btn p-4 pick-hero">
+            <button class="btn p-4 pick-hero" id="girlPink">
                 <img src="./images/hero-girl-pink.png" alt="girl-pink">
             </button>
-            <button class="btn p-4 pick-hero">
+            <button class="btn p-4 pick-hero" id="girlYellow">
                 <img src="./images/hero-girl-yellow.png" alt="girl-yellow">
             </button>
         </div>
-        <button class="btn btn-outline-danger btn-lg w-50 m-auto">Start the game!</button>
+        <button class="btn btn-outline-danger btn-lg w-50 m-auto mt-2" id="startGame">Start the game!</button>
+    </div>
+    <div class="container text-center d-flex flex-column justify-content-center w-50 d-none" id="gameOverContent">
+        <h1 class="heading pb-5 d-none" id="gameOverMessage">Game Over!</h1>
+        <h3 class="heading pb-5 d-none" id="gameOverMessageTwo">Enemies toasted you badly!!!</h3>
+
+        <h1 class="heading pb-5 d-none" id="congratsMessage">Congratulations!</h1>
+        <h3 class="heading pb-5 d-none" id="congratsMessageTwo">You beat the speed of the light!!!</h3>
+        <button class="btn btn-outline-danger btn-lg w-50 m-auto mt-2" id="restartGame">Restart</button>
     </div>
 
+    <script src="./js/clouds.js"></script>
+    <script src="./js/boss.js"></script>
+    <script src="./js/mobs.js"></script>
+    <script src="./js/innocent.js"></script>
+    <script src="./js/heroes.js"></script>
+    <script src="./js/gameOverScreen.js"></script>
+    <script src="./js/gameScreen.js"></script>
     <script src="./js/splashScreen.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
