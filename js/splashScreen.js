@@ -13,13 +13,16 @@ let gameOverContent = document.querySelector('#gameOverContent');
 let restartGameButton = document.querySelector('#restartGame');
 let gameOverMessage = document.querySelector('#gameOverMessage');
 let gameOverMessageTwo = document.querySelector('#gameOverMessageTwo');
-let congratsMessage = document.querySelector('#congratsMessage');
-let congratsMessageTwo = document.querySelector('#congratsMessageTwo');
+let gameOverScore = document.querySelector('#gameOverScore');
+let congratsMessage = document.querySelector('#congratsScreen');
+let congratsMessageTwo = document.querySelector('#congratsScreenTwo');
+let congratsScreenScore = document.querySelector('#congratsScreenScore');
 
 let pickedHero = null;
 let positionX = 600, positionY = 600;
 let isRight = false, isLeft = false;
-let incrX = 2;
+let bossSpeed = 2;
+let bossFireSpeed = 2;
 let isFired = false;
 let isGameOver = false;
 let isWon = false;
@@ -28,6 +31,8 @@ let bossHp = 100;
 let count = null;
 let mobSpeed = 2;
 let controlSpeed = 5;
+let score = 0;
+let medPackSpeed = 3;
 
 let bg = new Image();
 bg.src = './images/bg.png';
@@ -65,6 +70,9 @@ magic.src = './images/magic.png';
 let fire = new Image();
 fire.src = './images/fire.png';
 
+let medPack = new Image();
+medPack.src = './images/heal.png';
+
 
 let intervalId = 0;
 let clouds = [
@@ -88,7 +96,10 @@ let bosses = [
     {x: 50, y: 50}
 ]
 
-let magics = {x: (positionX + 35), y: (positionY - 10)}
+let magics = {
+    x: (positionX + 25), 
+    y: (positionY - 10)
+}
 
 let fires = [
     {x: 900, y: -100},
@@ -97,6 +108,10 @@ let fires = [
     {x: 300, y: -1600},
     {x: 100, y: -2100},
     {x: 100, y: -2600},
+]
+
+let meds = [
+    {x: 500, y: -2000}
 ]
 
 function drawSplashScreen() {
@@ -139,10 +154,15 @@ window.addEventListener('load', () => {
         isWon = false;
         pickedHero = null;
         heroHp = 100;
+        bossHp = 100;
         count = null;
         mobSpeed = 2;
         controlSpeed = 5;
         miss = null;
+        score = 0;
+        bossSpeed = 2;
+        bossFireSpeed = 2;
+        medPackSpeed = 3;
         drawSplashScreen();
     });
 

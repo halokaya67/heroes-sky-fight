@@ -20,13 +20,17 @@ function drawGameOverScreen() {
     if (isWon === true) {
         gameOverMessage.classList.add('d-none');
         gameOverMessageTwo.classList.add('d-none');
+        gameOverScore.classList.add('d-none');
         congratsMessage.classList.remove('d-none');
         congratsMessageTwo.classList.remove('d-none');
+        congratsScreenScore.classList.remove('d-none');
     } else {
         gameOverMessage.classList.remove('d-none');
         gameOverMessageTwo.classList.remove('d-none');
+        gameOverScore.classList.add('d-none');
         congratsMessage.classList.add('d-none');
         congratsMessageTwo.classList.add('d-none');
+        congratsScreenScore.classList.remove('d-none');
     }
     
     ctx.drawImage(bgCity, 0, 400);

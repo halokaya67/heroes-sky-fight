@@ -2,7 +2,7 @@
 
 ## Description
 
-Heroes Sky Fight is an arcade game in which the player is trying to avoid or kill the enemies and catch the innocents falling down. The player needs to move horizontally to do all those things mentioned above. Also there will be med-packs on the screen to heal the player. After saving innocents a boss fight will happen. In order to finish the game, the player needs to kill the boss.
+Heroes Sky Fight is an arcade game in which the player is trying to avoid or kill the enemies and catch the innocents falling down. The player needs to move horizontally to do all those things mentioned above. Also there will be med-packs on the screen to heal the player. After saving innocents a boss fight will occure. In order to finish the game, the player needs to kill the boss.
 
 ## MVP (DOM - Canvas)
 
@@ -15,11 +15,10 @@ Heroes Sky Fight is an arcade game in which the player is trying to avoid or kil
 ## Backlog
 
 - There will be a scoreboard. If the hero choose to kill the enemies instead of avoiding the score will be diffrent.
-- Some of the enemies will be attacking randomly.
 - There will be an health bar for the player.
-- There will be an health bar for every each of the bosses.
+- There will be an health bar for the boss.
 - There will be randomly showing up med-packs healing the player.
-- After every boss the game will be harder.
+- After every hit the boss takes the game will be harder.
 - There will be different heroes to pick on the splash screen.
 
 ## Data structure
@@ -51,37 +50,39 @@ Heroes Sky Fight is an arcade game in which the player is trying to avoid or kil
 # boss.js
 - drawBossScreen() {}
 
+# med-pack.js
+- drawMedPack() {}
+
 ## States y States Transitions
 
 Definition of the different states and their transition (transition functions)
 
 - splashScreen
 - gameScreen
+- bossScreen
 - gameoverScreen
 
 ## Task
 
-- splashScreen - drawCanvas
 - splashScreen - drawSplashScreen
+- splashScreen - drawPickHeroScreen
 - gameScreen - drawGameScreen
 - gameOverScreen - drawGameOverScreen
-- gameScreen - startLoop
-- enemy - draw
-- enemy - move
-- characters - draw
-- characters - move
-- characters - shoot
-- characters - chechScreenCollision
-- innocent - draw
-- innocent - move
-- gameScreen - checkCollision
+- clouds - drawClouds
+- heroes - drawHeroes
+- heroes - moveHeroes
+- mobs - drawMobs (Collision logic included)
+- innocent - drawInnocent (Collision logic included)
 - gameScreen - addEventListener
+- boss - drawBossScreen (Collision logic included)
+- medPack - drawMedPack (Collision logic included)
+- heroes - drawMagic (Collision logic included)
 
 ## Additional Links
 
 ### Trello
 
-[Link url](https://trello.com)
+[Link url](https://trello.com/invite/b/0nqj6SAM/155ea7af04f1f63e924490a10ae07938/heroes-sky-fight)
 
 ### Slides
 

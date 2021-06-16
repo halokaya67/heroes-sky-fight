@@ -5,6 +5,38 @@ function drawBossScreen() {
 
     drawClouds();
 
+    ctx.beginPath();
+    if (heroHp <= 100 && heroHp > 75) {
+        ctx.fillStyle = '#38b000';
+    } else if (heroHp <= 75 && heroHp > 50) {
+        ctx.fillStyle = '#f7b538';
+    } else if (heroHp <= 50 && heroHp > 25) {
+        ctx.fillStyle = '#d8572a';
+    } else if (heroHp <= 25) {
+        ctx.fillStyle = '#c32f27';
+    }
+    ctx.fillRect(20, 130, (heroHp * 2), 30);
+
+    ctx.font = 'bolder 44px Annie Use Your Telescope';
+    ctx.fillText(`Score: ${score}`, 20, 200);
+    ctx.closePath();
+
+    ctx.beginPath();
+    if (bossHp <= 100 && bossHp > 75) {
+        ctx.fillStyle = '#38b000';
+    } else if (bossHp <= 75 && bossHp > 50) {
+        ctx.fillStyle = '#f7b538';
+    } else if (bossHp <= 50 && bossHp > 25) {
+        ctx.fillStyle = '#d8572a';
+    } else if (bossHp <= 25) {
+        ctx.fillStyle = '#c32f27';
+    }
+    ctx.fillRect(150, 70, (bossHp * 10), 30);
+
+    ctx.font = 'bolder 44px Annie Use Your Telescope';
+    ctx.fillText(`Very Bad Crazy Vision`, 475, 50);
+    ctx.closePath();
+
     drawHeroes();
 
     moveHeroes();
@@ -15,22 +47,41 @@ function drawBossScreen() {
 
     for(let i = 0; i < bosses.length; i++) {
         ctx.drawImage(boss, bosses[i].x, bosses[i].y)
-        bosses[i].x = bosses[i].x + incrX;
+        bosses[i].x = bosses[i].x + bossSpeed;
+        medPackSpeed = 3;
+
         if (bosses[i].x <= 0) {
-            incrX = -incrX;
+            bossSpeed = -bossSpeed;
         } else if (bosses[i].x + boss.width >= canvas.width) {
-            incrX = -incrX;
+            bossSpeed = -bossSpeed;
+        }
+
+        if ( magics.x <= bosses[i].x + boss.width && magics.x + magic.width >= bosses[i].x) {
+            if (magics.y <= bosses[i].y + boss.height && magics.y + magic.height >= bosses[i].y) {
+                magics.status = 0;
+                score += 100;
+                bossHp -= 20;
+                bossFireSpeed += 1;
+                medPackSpeed += 2;
+                controlSpeed += 1;
+                
+                if (bossSpeed < 0) {
+                    bossSpeed -= 2;
+                } else {
+                    bossSpeed += 2;
+                }
+            }
         }
     }
 
     for (let i = 0; i <fires.length; i++) {
         ctx.drawImage(fire, fires[i].x, fires[i].y)
-        fires[i].y += 2;
+        fires[i].y += bossFireSpeed;
 
         if (fires[i].y > canvas.height || fires[i].status === 0) {
             fires[i] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)),
-                y: -2000,
+                y: -Math.floor(Math.random() * 1000),
                 status: 1
             }
         }
@@ -73,17 +124,24 @@ function drawBossScreen() {
             }
         } 
     }
+
+    drawMedPack();
     
     ctx.drawImage(bgCity, 0, 750);
     ctx.drawImage(bgCity, 820, 750);
 
-    if (heroHp === 0) {
+    if (heroHp <= 0) {
         isGameOver = true;
+    } else if (bossHp <= 0) {
+        score += 1000;
+        isWon = true;
     }
 
     if (isGameOver || isWon) {
         cancelAnimationFrame(intervalId);
         drawGameOverScreen();
+        gameOverScore.innerHTML = `Your Score is ${score}!`;
+        congratsScreenScore.innerHTML = `Your Score is ${score}!`;
     } else {
         intervalId = requestAnimationFrame(drawBossScreen);
     }

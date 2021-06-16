@@ -28,13 +28,14 @@ function moveHeroes() {
 
 function drawMagic() {
     ctx.drawImage(magic, magics.x, magics.y)
-    magics.y -= 8;
+    magics.y -= 20;
 
-    if (magics.y < 0) {
+    if (magics.y < 0 || magics.status === 0) {
         isFired = false;
         magics = {
             x: (positionX + 35), 
-            y: (positionY - 10)
+            y: (positionY - 10),
+            status: 1
         }
     }
 }

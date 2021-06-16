@@ -6,7 +6,7 @@ function drawMobs() {
         if (mobs[i].y > canvas.height || mobs[i].status === 0) {
             mobs[i] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)),
-                y: -1500,
+                y: -Math.floor(Math.random() * 1000),
                 status: 1
             }   
         }
@@ -47,6 +47,15 @@ function drawMobs() {
                     }
                 }
             }
-        }    
+        } 
+        
+        if (isFired && magics.x <= mobs[i].x + mob.width && magics.x + magic.width >= mobs[i].x) {
+            if (magics.y <= mobs[i].y + mob.height && magics.y + magic.height >= mobs[i].y) {
+                mobs[i].status = 0;
+                magics.status = 0;
+                console.log('hello');
+                score += 20
+            }
+        }
     }
 }

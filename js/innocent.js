@@ -1,7 +1,7 @@
 function drawInnocent() {
     for (let i = 0; i < innocents.length; i++) {
         ctx.drawImage(innocent, innocents[i].x, innocents[i].y)
-        innocents[i].y += mobSpeed;
+        innocents[i].y += medPackSpeed;
 
         if (innocents[i].y > canvas.height || innocents[i].status === 0) {
             innocents[i] = {
@@ -15,36 +15,44 @@ function drawInnocent() {
             if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0; 
-                    mobSpeed = mobSpeed + 1;
+                    mobSpeed += 1;
                     count++;
-                    controlSpeed = controlSpeed + 1;
+                    controlSpeed += 1;
+                    score += 50;
+                    medPackSpeed += 2;
                 }
             }
         } else if (pickedHero === 'boyPurple') {
             if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
-                    mobSpeed = mobSpeed + 1;
+                    mobSpeed += 1;
                     count++;
-                    controlSpeed = controlSpeed + 1;
+                    controlSpeed += 1;
+                    score += 50;
+                    medPackSpeed += 2;
                 }
             }
         } else if (pickedHero === 'girlPink') {
             if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
-                    mobSpeed = mobSpeed + 1;
+                    mobSpeed += 1;
                     count++;
-                    controlSpeed = controlSpeed + 1;
+                    controlSpeed += 1;
+                    score += 50;
+                    medPackSpeed += 2;
                 }
             }
         } else if (pickedHero === 'girlYellow') {
             if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
-                    mobSpeed = mobSpeed + 1;
+                    mobSpeed += 1;
                     count++;
-                    controlSpeed = controlSpeed + 1;
+                    controlSpeed += 1;
+                    score += 50;
+                    medPackSpeed += 2;
                 }
             }
         }
