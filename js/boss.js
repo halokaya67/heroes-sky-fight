@@ -77,6 +77,8 @@ function drawBossScreen() {
     for (let i = 0; i <fires.length; i++) {
         ctx.drawImage(fire, fires[i].x, fires[i].y)
         fires[i].y += bossFireSpeed;
+        fireballAudio.play();
+        fireballAudio.loop = false;
 
         if (fires[i].y > canvas.height || fires[i].status === 0) {
             fires[i] = {
@@ -129,6 +131,11 @@ function drawBossScreen() {
     
     ctx.drawImage(bgCity, 0, 750);
     ctx.drawImage(bgCity, 820, 750);
+
+    gameScreenAudio.pause();
+
+    bossBattleAudio.play();
+    bossBattleAudio.volume = 0.05
 
     if (heroHp <= 0) {
         isGameOver = true;

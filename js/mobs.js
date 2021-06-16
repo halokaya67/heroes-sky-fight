@@ -53,9 +53,10 @@ function drawMobs() {
             if (magics.y <= mobs[i].y + mob.height && magics.y + magic.height >= mobs[i].y) {
                 mobs[i].status = 0;
                 magics.status = 0;
-                console.log('hello');
+                mobsCollusionAudio.play();
+                mobsCollusionAudio.loop = false;
                 score += 20
             }
         }
     }
-}
+}''

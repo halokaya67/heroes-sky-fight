@@ -51,6 +51,11 @@ function drawGameScreen() {
     ctx.drawImage(bgCity, 0, 750);
     ctx.drawImage(bgCity, 820, 750);
 
+    splashScreenAudio.pause();
+
+    gameScreenAudio.play();
+    gameScreenAudio.volume = 0.05;
+
     if (isGameOver) {
         cancelAnimationFrame(intervalId);
         drawGameOverScreen();

@@ -73,6 +73,18 @@ fire.src = './images/fire.png';
 let medPack = new Image();
 medPack.src = './images/heal.png';
 
+let splashScreenAudio = new Audio('./audio/splashScreen.mp3');
+let gameScreenAudio = new Audio('./audio/gameScreen.mp3');
+let magicFireAudio = new Audio('./audio/magicFire.wav');
+let mobsCollusionAudio = new Audio('./audio/mobsCollision.wav');
+let bossBattleAudio = new Audio('./audio/bossBattle.mp3');
+let fireballAudio = new Audio('./audio/fireballAttack.wav');
+let congratsScreenClap = new Audio('./audio/congratsScreenClapping.wav');
+let congratsScreenInstrument = new Audio('./audio/congratsScreenAudio.flac');
+let congratsScreenAudio = new Audio('./audio/congratsScreen.wav');
+let gameOverScreenAudio = new Audio('./audio/gameOverScreen.mp3');
+let gameOverScreenRetro = new Audio('./audio/gameOverScreenRetro.wav');
+
 
 let intervalId = 0;
 let clouds = [
@@ -122,6 +134,8 @@ function drawSplashScreen() {
 
     ctx.drawImage(bgCity, 0, 400);
     ctx.drawImage(bgCity, 820, 400);
+    splashScreenAudio.play();
+    splashScreenAudio.volume = 0.05;
     intervalId = requestAnimationFrame(drawSplashScreen);
 }
 
@@ -150,6 +164,11 @@ window.addEventListener('load', () => {
         cancelAnimationFrame(intervalId);
         splashContent.classList.remove('d-none');
         gameOverContent.classList.add('d-none');
+        congratsScreenAudio.pause();
+        congratsScreenClap.pause();
+        congratsScreenInstrument.pause();
+        gameOverScreenAudio.pause();
+        gameOverScreenRetro.pause();
         isGameOver = false;
         isWon = false;
         pickedHero = null;
