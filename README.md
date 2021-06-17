@@ -32,6 +32,15 @@ Heroes Sky Fight is an arcade game in which the player is trying to avoid or kil
 
 # gameOverScreen.js
 - drawGameOverScreen() {}
+- updateHighScores() {}
+
+# bossScreen.js
+- drawBossScreen() {}
+
+# boss.js
+- drawBossCollision() {}
+- drawBossHp() {}
+- drawFireballCollision() {}
 
 # clouds.js
 - drawClouds() {}
@@ -40,15 +49,13 @@ Heroes Sky Fight is an arcade game in which the player is trying to avoid or kil
 - drawHeroes() {}
 - moveHeroes() {}
 - drawMagic() {}
+- drawHeroHp() {}
 
 # mobs.js
 - drawMobs() {}
 
 # innocent.js
 - drawInnocent() {}
-
-# boss.js
-- drawBossScreen() {}
 
 # med-pack.js
 - drawMedPack() {}
@@ -74,9 +81,15 @@ Definition of the different states and their transition (transition functions)
 - mobs - drawMobs (Collision logic included)
 - innocent - drawInnocent (Collision logic included)
 - gameScreen - addEventListener
-- boss - drawBossScreen (Collision logic included)
+- bossScreen - drawBossScreen (Collision logic included)
+- boss - drawBossCollision
+- boss - drawBossHp
+- boss - drawFireballCollision
+- heroes - drawMagic
+- heroes - drawHeroHp
 - medPack - drawMedPack (Collision logic included)
 - heroes - drawMagic (Collision logic included)
+- gameOverScreen - updateHighScores
 
 ## Additional Links
 

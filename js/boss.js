@@ -48,7 +48,7 @@ function drawBossHp() {
     ctx.closePath();
 }
 
-function drawFireball() {
+function drawFireballCollision() {
     for (let i = 0; i <fires.length; i++) {
         ctx.drawImage(fire, fires[i].x, fires[i].y)
         fires[i].y += bossFireSpeed;

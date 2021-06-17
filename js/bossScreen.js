@@ -17,7 +17,7 @@ function drawBossScreen() {
 
     drawBossCollision();
 
-    drawFireball();
+    drawFireballCollision();
 
     drawMedPack();
     
