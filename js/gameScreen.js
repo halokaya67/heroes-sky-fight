@@ -39,7 +39,7 @@ function drawGameScreen() {
         drawMagic();
     }
 
-    if (count === 3) {
+    if (innocentCatch === 3) {
         cancelAnimationFrame(intervalId);
         drawBossScreen();
     }
@@ -61,7 +61,7 @@ function drawGameScreen() {
         drawGameOverScreen();
         gameOverScore.innerHTML = `Your Score is ${score}!`;
         congratsScreenScore.innerHTML = `Your Score is ${score}!`;
-    } else if (count !== 3) {
+    } else if (innocentCatch !== 3) {
         intervalId = requestAnimationFrame(drawGameScreen);
     }
 }

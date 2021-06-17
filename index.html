@@ -15,10 +15,19 @@
 </head>
 
 <body>
-    <div class="container" id="splashCanvas">
+    <div class="position-relative" id="bgImgContainer">
+        <img class="position-absolute top-0 start-0 bg-img" src="./images/hero-boy-green.png" alt="boy-green">
+        <img class="position-absolute top-0 end-0 bg-img" src="./images/hero-boy-purple.png" alt="boy-purple">
+        <img class="position-absolute bottom-0 start-0 bg-img" src="./images/hero-girl-pink.png" alt="girl-pink">
+        <img class="position-absolute bottom-0 end-0 bg-img" src="./images/hero-girl-yellow.png" alt="girl-yellow">
+        <img class="position-absolute top-0 start-50 translate-middle-x bg-img" src="./images/boss.png" alt="boss">
+        <img class="position-absolute bottom-0 start-50 translate-middle-x bg-img" src="./images/enemy.png" alt="mob">
+        
+    </div>
+    <div class="container text-center d-flex flex-column position-absolute top-50 start-50 translate-middle" id="splashCanvas">
         <canvas id="splashScreenCanvas" width="1300" height="600"></canvas>
     </div>
-    <div class="container text-center d-flex flex-column justify-content-center w-50" id="splashContent">
+    <div class="container text-center d-flex flex-column position-absolute top-50 start-50 translate-middle" id="splashContent">
         <h1 class=" heading pb-3">Heroes Sky Fight</h1>
         <p class="content pb-3">You are the last hope of the human race! Pick your hero and start fighting against
             enemies trying to kill human race! Move your hero to avoid or kill the enemies, save the falling humans,
@@ -29,9 +38,9 @@
             <li>Arrow Left/Right - Moves the hero</li>
             <li>Space - Shoot</li>
         </ul>
-        <button class="btn btn-outline-danger btn-lg m-auto w-25" id="pickHero">Choose a Hero</button>
+        <button class="btn btn-outline-danger btn-lg m-auto" id="pickHero">Choose a Hero</button>
     </div>
-    <div class="container text-center d-flex flex-column justify-content-center w-50 d-none" id="heroSelectionContent">
+    <div class="container text-center d-flex d-none flex-column position-absolute top-50 start-50 translate-middle" id="heroSelectionContent">
         <h1 class="heading pb-3">Pick Your Hero!</h1>
         <div>
             <button class="btn p-4 pick-hero" id="boyGreen">
@@ -49,18 +58,16 @@
         </div>
         <button class="btn btn-outline-danger btn-lg w-50 m-auto mt-2" id="startGame">Start the game!</button>
     </div>
-    <div class="container text-center d-flex flex-column justify-content-center w-50 d-none" id="gameOverContent">
-        <h1 class="heading pb-4 d-none" id="gameOverMessage">Game Over!</h1>
-        <h3 class="heading pb-4 d-none" id="gameOverMessageTwo">Enemies toasted you badly!!!</h3>
-        <h3 class="heading pb-4 d-none" id="gameOverScore"></h3>
+    <div class="container text-center d-flex flex-column position-absolute top-50 start-50 translate-middle w-50 d-none" id="gameOverContent">
+        <h1 class="heading d-none" id="gameOverMessage">Game Over!</h1>
+        <h2 class="heading d-none" id="gameOverMessageTwo">Enemies toasted you badly!!!</h3>
+        <h3 class="heading d-none" id="gameOverScore"></h3>
 
-        <h1 class="heading pb-4 d-none" id="congratsScreen">Congratulations!</h1>
-        <h3 class="heading pb-4 d-none" id="congratsScreenTwo">You beat the speed of the light!!!</h3>
-        <h3 class="heading pb-4 d-none" id="congratsScreenScore"></h3>
-        <ol id="highscoreTable">
-            
-        </ol>
-        <button class="btn btn-outline-danger btn-lg w-50 m-auto mt-2" id="restartGame">Restart</button>
+        <h1 class="heading d-none" id="congratsScreen">Congratulations!</h1>
+        <h2 class="heading d-none" id="congratsScreenTwo">You beat the speed of the light!!!</h3>
+        <h3 class="heading d-none" id="congratsScreenScore"></h3>
+        <ol id="highscoreTable"></ol>
+        <button class="btn btn-outline-danger btn-lg w-50 m-auto" id="restartGame">Restart</button>
     </div>
 
     <script src="./js/medPack.js"></script>

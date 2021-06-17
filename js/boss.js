@@ -56,7 +56,7 @@ function drawBossScreen() {
             bossSpeed = -bossSpeed;
         }
 
-        if ( magics.x <= bosses[i].x + boss.width && magics.x + magic.width >= bosses[i].x) {
+        if (isFired && magics.x <= bosses[i].x + boss.width && magics.x + magic.width >= bosses[i].x) {
             if (magics.y <= bosses[i].y + boss.height && magics.y + magic.height >= bosses[i].y) {
                 magics.status = 0;
                 score += 100;
@@ -64,6 +64,7 @@ function drawBossScreen() {
                 bossFireSpeed += 1;
                 medPackSpeed += 2;
                 controlSpeed += 1;
+                mobsCollusionAudio.play();
                 
                 if (bossSpeed < 0) {
                     bossSpeed -= 2;
@@ -78,7 +79,6 @@ function drawBossScreen() {
         ctx.drawImage(fire, fires[i].x, fires[i].y)
         fires[i].y += bossFireSpeed;
         fireballAudio.play();
-        fireballAudio.loop = false;
 
         if (fires[i].y > canvas.height || fires[i].status === 0) {
             fires[i] = {
@@ -94,6 +94,10 @@ function drawBossScreen() {
                     if (heroHp > 0) {
                         heroHp -= 50;
                         fires[i].status = 0;
+
+                        if (counter === 1) {
+                            heroHurtAudio.play();
+                        }
                     }
                 }
             }
@@ -103,6 +107,10 @@ function drawBossScreen() {
                     if (heroHp > 0) {
                         heroHp -= 50;
                         fires[i].status = 0;
+
+                        if (counter === 1) {
+                            heroHurtAudio.play();
+                        }
                     }
                 }
             }
@@ -112,6 +120,10 @@ function drawBossScreen() {
                     if (heroHp > 0) {
                         heroHp -= 50;
                         fires[i].status = 0;
+
+                        if (counter === 1) {
+                            heroHurtAudio.play();
+                        }
                     }
                 }
             }
@@ -121,6 +133,10 @@ function drawBossScreen() {
                     if (heroHp > 0) {
                         heroHp -= 50;
                         fires[i].status = 0;
+
+                        if (counter === 1) {
+                            heroHurtAudio.play();
+                        }
                     }
                 }
             }

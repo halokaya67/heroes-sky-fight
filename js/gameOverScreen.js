@@ -16,8 +16,7 @@ function drawGameOverScreen() {
             }
         }
     }
-
-    musicCount++;
+    counter++;    
 
     if (isWon === true) {
         gameOverMessage.classList.add('d-none');
@@ -29,7 +28,8 @@ function drawGameOverScreen() {
         congratsScreenAudio.play();
         congratsScreenAudio.volume = 0.05;
 
-        if (musicCount === 1) {
+        if (counter === 1) {
+            updateHighScores();
             congratsScreenClap.play();
             congratsScreenClap.volume = 0.05;
         }
@@ -43,7 +43,8 @@ function drawGameOverScreen() {
         gameOverScreenAudio.play();
         gameOverScreenAudio.volume = 0.05;
 
-        if (musicCount === 1) {
+        if (counter === 1) {
+            updateHighScores();
             gameOverScreenRetro.play();
             gameOverScreenRetro.volume = 0.05;
         }
@@ -58,3 +59,44 @@ function drawGameOverScreen() {
     intervalId = requestAnimationFrame(drawGameOverScreen);
 }
 
+function updateHighScores() {
+    let name;
+    if (score > highscores[0].score) {
+        console.log('hello')
+        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
+        highscores.splice(0, 0 , {
+            name: name.slice(0, 7).toUpperCase(),
+            score: score
+        });
+        highscores.pop();
+    } else if (score > highscores[1].score) {
+        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
+        highscores.splice(1, 0 , {
+            name: name.slice(0, 7).toUpperCase(),
+            score: score
+        });
+        highscores.pop();
+    } else if (score > highscores[2].score) {
+        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
+        highscores.splice(2, 0 , {
+            name: name.slice(0, 7).toUpperCase(),
+            score: score
+        });
+        highscores.pop();
+    } else if (score > highscores[3].score) {
+        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
+        highscores.splice(3, 0 , {
+            name: name.slice(0, 7).toUpperCase(),
+            score: score
+        });
+        highscores.pop();
+    }
+
+    highScoreList.innerHTML = ''
+
+    highscores.forEach((elem) => {
+        let li = document.createElement('li');
+        li.innerHTML = `${elem.name} - ${elem.score}`;
+        highScoreList.appendChild(li);
+    })
+}

@@ -16,10 +16,11 @@ function drawInnocent() {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0; 
                     mobSpeed += 1;
-                    count++;
+                    innocentCatch++;
                     controlSpeed += 1;
                     score += 50;
                     medPackSpeed += 2;
+                    innocentSaveAudio.play();
                 }
             }
         } else if (pickedHero === 'boyPurple') {
@@ -27,10 +28,11 @@ function drawInnocent() {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
                     mobSpeed += 1;
-                    count++;
+                    innocentCatch++;
                     controlSpeed += 1;
                     score += 50;
                     medPackSpeed += 2;
+                    innocentSaveAudio.play();
                 }
             }
         } else if (pickedHero === 'girlPink') {
@@ -38,10 +40,11 @@ function drawInnocent() {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
                     mobSpeed += 1;
-                    count++;
+                    innocentCatch++;
                     controlSpeed += 1;
                     score += 50;
                     medPackSpeed += 2;
+                    innocentSaveAudio.play();
                 }
             }
         } else if (pickedHero === 'girlYellow') {
@@ -49,10 +52,11 @@ function drawInnocent() {
                 if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
                     innocents[i].status = 0;
                     mobSpeed += 1;
-                    count++;
+                    innocentCatch++;
                     controlSpeed += 1;
                     score += 50;
                     medPackSpeed += 2;
+                    innocentSaveAudio.play();
                 }
             }
         }

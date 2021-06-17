@@ -17,6 +17,7 @@ let gameOverScore = document.querySelector('#gameOverScore');
 let congratsMessage = document.querySelector('#congratsScreen');
 let congratsMessageTwo = document.querySelector('#congratsScreenTwo');
 let congratsScreenScore = document.querySelector('#congratsScreenScore');
+let highScoreList = document.querySelector('#highscoreTable');
 
 let pickedHero = null;
 let positionX = 600, positionY = 600;
@@ -28,12 +29,12 @@ let isGameOver = false;
 let isWon = false;
 let heroHp = 100;
 let bossHp = 100;
-let count = 0;
+let innocentCatch = 0;
 let mobSpeed = 2;
 let controlSpeed = 5;
 let score = 0;
 let medPackSpeed = 3;
-let musicCount = 0;
+let counter = 0;
 
 let bg = new Image();
 bg.src = './images/bg.png';
@@ -84,6 +85,9 @@ let congratsScreenClap = new Audio('./audio/congratsScreenClapping.wav');
 let congratsScreenAudio = new Audio('./audio/congratsScreen.wav');
 let gameOverScreenAudio = new Audio('./audio/gameOverScreen.mp3');
 let gameOverScreenRetro = new Audio('./audio/gameOverScreenRetro.wav');
+let heroHurtAudio = new Audio('./audio/hurt.wav');
+let innocentSaveAudio = new Audio('./audio/innocentSave.wav');
+let heroHealAudio = new Audio('./audio/heal.wav');
 
 
 let intervalId = 0;
@@ -145,12 +149,6 @@ let highscores = [
     }
 ]
 
-let scores = highscores.map((elem) => {
-    return elem.score;
-})
-
-
-
 function drawSplashScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bg, 0, 0);
@@ -198,14 +196,18 @@ window.addEventListener('load', () => {
         pickedHero = null;
         heroHp = 100;
         bossHp = 100;
-        count = 0;
+        innocentCatch = 0;
         mobSpeed = 2;
         controlSpeed = 5;
         score = 0;
         bossSpeed = 2;
         bossFireSpeed = 2;
         medPackSpeed = 3;
-        musicCount = 0;
+        counter = 0;
+        player = {
+            name: null,
+            score: score
+        }
         drawSplashScreen();
     });
 

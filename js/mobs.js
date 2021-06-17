@@ -17,6 +17,7 @@ function drawMobs() {
                     if (heroHp > 0) {
                         heroHp -= 20;
                         mobs[i].status = 0;
+                        heroHurtAudio.play();
                     }
                 }
             }
@@ -26,6 +27,7 @@ function drawMobs() {
                     if (heroHp > 0) {
                         heroHp -= 20;
                         mobs[i].status = 0;
+                        heroHurtAudio.play();
                     }
                 }
             }
@@ -35,6 +37,7 @@ function drawMobs() {
                     if (heroHp > 0) {
                         heroHp -= 20;
                         mobs[i].status = 0;
+                        heroHurtAudio.play();
                     }
                 }
             }
@@ -44,6 +47,7 @@ function drawMobs() {
                     if (heroHp > 0) {
                         heroHp -= 20;
                         mobs[i].status = 0;
+                        heroHurtAudio.play();
                     }
                 }
             }
@@ -54,7 +58,6 @@ function drawMobs() {
                 mobs[i].status = 0;
                 magics.status = 0;
                 mobsCollusionAudio.play();
-                mobsCollusionAudio.loop = false;
                 score += 20
             }
         }

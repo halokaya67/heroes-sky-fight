@@ -16,6 +16,7 @@ function drawMedPack() {
                 if (meds[i].y + medPack.height >= positionY && meds[i].y <= positionY + boyGreen.height) {
                     meds[i].status = 0;
                     score += 50;
+                    heroHealAudio.play();
 
                     if (heroHp <= 80) {
                         heroHp += 20;
@@ -29,6 +30,7 @@ function drawMedPack() {
                 if (meds[i].y + medPack.height >= positionY && meds[i].y <= positionY + boyGreen.height) {
                     meds[i].status = 0;
                     score += 50;
+                    heroHealAudio.play();
                     
                     if (heroHp <= 80) {
                         heroHp += 20;
@@ -42,6 +44,7 @@ function drawMedPack() {
                 if (meds[i].y + medPack.height >= positionY && meds[i].y <= positionY + boyGreen.height) {
                     meds[i].status = 0;
                     score += 50;
+                    heroHealAudio.play();
                     
                     if (heroHp <= 80) {
                         heroHp += 20;
@@ -55,6 +58,7 @@ function drawMedPack() {
                 if (meds[i].y + medPack.height >= positionY && meds[i].y <= positionY + boyGreen.height) {
                     meds[i].status = 0;
                     score += 50;
+                    heroHealAudio.play();
                     
                     if (heroHp <= 80) {
                         heroHp += 20;
