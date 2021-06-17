@@ -62,7 +62,6 @@ function drawGameOverScreen() {
 function updateHighScores() {
     let name;
     if (score > highscores[0].score) {
-        console.log('hello')
         name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
         highscores.splice(0, 0 , {
             name: name.slice(0, 7).toUpperCase(),

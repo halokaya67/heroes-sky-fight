@@ -246,6 +246,11 @@ window.addEventListener('load', () => {
     document.addEventListener('keydown', (event) => {
         if (event.code === 'Space') {
             isFired = true;
+            magics = {
+                x: (positionX + 25), 
+                y: (positionY - 10),
+                status: 1
+            }
         }
     })
 })

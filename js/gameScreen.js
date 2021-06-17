@@ -35,9 +35,8 @@ function drawGameScreen() {
 
     drawMedPack();
 
-    if (isFired) {
-        drawMagic();
-    }
+    drawMagic();
+
 
     if (innocentCatch === 3) {
         cancelAnimationFrame(intervalId);

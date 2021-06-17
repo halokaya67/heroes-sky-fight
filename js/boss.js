@@ -41,9 +41,8 @@ function drawBossScreen() {
 
     moveHeroes();
     
-    if (isFired) {
-        drawMagic();
-    }
+    drawMagic();
+
 
     for(let i = 0; i < bosses.length; i++) {
         ctx.drawImage(boss, bosses[i].x, bosses[i].y)

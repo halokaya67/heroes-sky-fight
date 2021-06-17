@@ -27,16 +27,13 @@ function moveHeroes() {
 }
 
 function drawMagic() {
-    ctx.drawImage(magic, magics.x, magics.y)
-    magicFireAudio.play();
-    magics.y -= 20;
+    if (isFired) {
+        ctx.drawImage(magic, magics.x, magics.y)
+        magicFireAudio.play();
+        magics.y -= 20;
+    }
 
     if (magics.y < 0 || magics.status === 0) {
         isFired = false;
-        magics = {
-            x: (positionX + 35), 
-            y: (positionY - 10),
-            status: 1
-        }
     }
 }
