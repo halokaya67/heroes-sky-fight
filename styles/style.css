@@ -63,7 +63,6 @@ h3 {
 
 #gameOverContent h1 {
     font-size: 120px;
-    
 }
 
 #highscoreTable {
@@ -75,4 +74,34 @@ h3 {
 #bgImgContainer {
     z-index: -100;
     height: 950px;
+}
+
+#boyGreenBg {
+    transform: rotate(120deg);
+    height: 400px;
+}
+
+#boyPurpleBg {
+    transform: rotate(240deg);
+    height: 400px;
+}
+
+#girlPinkBg {
+    transform: rotate(60deg);
+    height: 400px;
+}
+
+#girlYellowBg {
+    transform: rotate(300deg);
+    height: 400px;
+}
+
+#bossBg {
+    transform: rotate(300deg);
+    height: 400px;
+}
+
+#mobBg {
+    transform: rotate(300deg);
+    height: 200px;
 }
