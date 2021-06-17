@@ -29,7 +29,6 @@ function moveHeroes() {
 function drawMagic() {
     ctx.drawImage(magic, magics.x, magics.y)
     magicFireAudio.play();
-    magicFireAudio.loop = false;
     magics.y -= 20;
 
     if (magics.y < 0 || magics.status === 0) {

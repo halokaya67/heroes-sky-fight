@@ -28,11 +28,12 @@ let isGameOver = false;
 let isWon = false;
 let heroHp = 100;
 let bossHp = 100;
-let count = null;
+let count = 0;
 let mobSpeed = 2;
 let controlSpeed = 5;
 let score = 0;
 let medPackSpeed = 3;
+let musicCount = 0;
 
 let bg = new Image();
 bg.src = './images/bg.png';
@@ -80,7 +81,6 @@ let mobsCollusionAudio = new Audio('./audio/mobsCollision.wav');
 let bossBattleAudio = new Audio('./audio/bossBattle.mp3');
 let fireballAudio = new Audio('./audio/fireballAttack.wav');
 let congratsScreenClap = new Audio('./audio/congratsScreenClapping.wav');
-let congratsScreenInstrument = new Audio('./audio/congratsScreenAudio.flac');
 let congratsScreenAudio = new Audio('./audio/congratsScreen.wav');
 let gameOverScreenAudio = new Audio('./audio/gameOverScreen.mp3');
 let gameOverScreenRetro = new Audio('./audio/gameOverScreenRetro.wav');
@@ -126,6 +126,31 @@ let meds = [
     {x: 500, y: -2000}
 ]
 
+let highscores = [
+    {
+        name: 'AAA',
+        score: 0000
+    },
+    {
+        name: 'BBB',
+        score: 0000
+    },
+    {
+        name: 'CCC',
+        score: 0000
+    },
+    {
+        name: 'DDD',
+        score: 0000
+    }
+]
+
+let scores = highscores.map((elem) => {
+    return elem.score;
+})
+
+
+
 function drawSplashScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(bg, 0, 0);
@@ -166,7 +191,6 @@ window.addEventListener('load', () => {
         gameOverContent.classList.add('d-none');
         congratsScreenAudio.pause();
         congratsScreenClap.pause();
-        congratsScreenInstrument.pause();
         gameOverScreenAudio.pause();
         gameOverScreenRetro.pause();
         isGameOver = false;
@@ -174,14 +198,14 @@ window.addEventListener('load', () => {
         pickedHero = null;
         heroHp = 100;
         bossHp = 100;
-        count = null;
+        count = 0;
         mobSpeed = 2;
         controlSpeed = 5;
-        miss = null;
         score = 0;
         bossSpeed = 2;
         bossFireSpeed = 2;
         medPackSpeed = 3;
+        musicCount = 0;
         drawSplashScreen();
     });
 

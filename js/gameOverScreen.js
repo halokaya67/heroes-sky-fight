@@ -17,6 +17,8 @@ function drawGameOverScreen() {
         }
     }
 
+    musicCount++;
+
     if (isWon === true) {
         gameOverMessage.classList.add('d-none');
         gameOverMessageTwo.classList.add('d-none');
@@ -24,14 +26,13 @@ function drawGameOverScreen() {
         congratsMessage.classList.remove('d-none');
         congratsMessageTwo.classList.remove('d-none');
         congratsScreenScore.classList.remove('d-none');
-        congratsScreenInstrument.play();
-        congratsScreenInstrument.loop = false;
-        congratsScreenInstrument.volume = 0.05;
-        congratsScreenClap.play();
-        congratsScreenClap.loop = false;
-        congratsScreenClap.volume = 0.05;
         congratsScreenAudio.play();
         congratsScreenAudio.volume = 0.05;
+
+        if (musicCount === 1) {
+            congratsScreenClap.play();
+            congratsScreenClap.volume = 0.05;
+        }
     } else {
         gameOverMessage.classList.remove('d-none');
         gameOverMessageTwo.classList.remove('d-none');
@@ -40,17 +41,19 @@ function drawGameOverScreen() {
         congratsMessageTwo.classList.add('d-none');
         congratsScreenScore.classList.remove('d-none');
         gameOverScreenAudio.play();
-        gameOverScreenRetro.play();
-        gameOverScreenRetro.loop = false;
         gameOverScreenAudio.volume = 0.05;
-        gameOverScreenRetro.volume = 0.05;
+
+        if (musicCount === 1) {
+            gameOverScreenRetro.play();
+            gameOverScreenRetro.volume = 0.05;
+        }
     }
     
     ctx.drawImage(bgCity, 0, 400);
     ctx.drawImage(bgCity, 820, 400);
 
     bossBattleAudio.pause();
-    splashScreenAudio.pause();
+    gameScreenAudio.pause();
     
     intervalId = requestAnimationFrame(drawGameOverScreen);
 }
