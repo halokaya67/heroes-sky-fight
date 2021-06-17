@@ -78,7 +78,7 @@ medPack.src = './images/heal.png';
 let splashScreenAudio = new Audio('./audio/splashScreen.mp3');
 let gameScreenAudio = new Audio('./audio/gameScreen.mp3');
 let magicFireAudio = new Audio('./audio/magicFire.wav');
-let mobsCollusionAudio = new Audio('./audio/mobsCollision.wav');
+let enemyHurtAudio = new Audio('./audio/enemyHurt.ogg');
 let bossBattleAudio = new Audio('./audio/bossBattle.mp3');
 let fireballAudio = new Audio('./audio/fireballAttack.wav');
 let congratsScreenClap = new Audio('./audio/congratsScreenClapping.wav');
@@ -102,6 +102,8 @@ let mobs = [
     {x: 700, y: -1100},
     {x: 200, y: -1600},
     {x: 100, y: -2100},
+    {x: 100, y: -2600},
+    {x: 100, y: -3100},
 ]
 
 let innocents = [
@@ -124,6 +126,7 @@ let fires = [
     {x: 300, y: -1600},
     {x: 100, y: -2100},
     {x: 100, y: -2600},
+    {x: 100, y: -3100},
 ]
 
 let meds = [

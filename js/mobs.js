@@ -6,7 +6,7 @@ function drawMobs() {
         if (mobs[i].y > canvas.height || mobs[i].status === 0) {
             mobs[i] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)),
-                y: -Math.floor(Math.random() * 1000),
+                y: -Math.floor(Math.random() * 100) - 950,
                 status: 1
             }   
         }
@@ -57,7 +57,7 @@ function drawMobs() {
             if (magics.y <= mobs[i].y + mob.height && magics.y + magic.height >= mobs[i].y) {
                 mobs[i].status = 0;
                 magics.status = 0;
-                mobsCollusionAudio.play();
+                enemyHurtAudio.play();
                 score += 20
             }
         }

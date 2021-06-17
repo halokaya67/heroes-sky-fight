@@ -35,24 +35,24 @@
             leaving med-packs around!</p>
         <h3 class="pb-3 heading">Controls</h3>
         <ul class="content pb-2" id="splashScreenList">
-            <li>Arrow Left/Right - Moves the hero</li>
-            <li>Space - Shoot</li>
+            <li id="arrowKeys">Arrow Left/Right - Moves the hero</li>
+            <li id="spaceKey">Space - Shoot</li>
         </ul>
         <button class="btn btn-outline-danger btn-lg m-auto" id="pickHero">Choose a Hero</button>
     </div>
     <div class="container text-center d-flex d-none flex-column position-absolute top-50 start-50 translate-middle" id="heroSelectionContent">
         <h1 class="heading pb-3">Pick Your Hero!</h1>
         <div>
-            <button class="btn p-4 pick-hero" id="boyGreen">
+            <button class="btn btn-outline-danger p-4 pick-hero" id="boyGreen">
                 <img src="./images/hero-boy-green.png" alt="boy-green">
             </button>
-            <button class="btn p-4 pick-hero" id="boyPurple">
+            <button class="btn btn-outline-danger p-4 pick-hero" id="boyPurple">
                 <img src="./images/hero-boy-purple.png" alt="boy-purple">
             </button>
-            <button class="btn p-4 pick-hero" id="girlPink">
+            <button class="btn btn-outline-danger p-4 pick-hero" id="girlPink">
                 <img src="./images/hero-girl-pink.png" alt="girl-pink">
             </button>
-            <button class="btn p-4 pick-hero" id="girlYellow">
+            <button class="btn btn-outline-danger p-4 pick-hero" id="girlYellow">
                 <img src="./images/hero-girl-yellow.png" alt="girl-yellow">
             </button>
         </div>
@@ -70,9 +70,10 @@
         <button class="btn btn-outline-danger btn-lg w-50 m-auto" id="restartGame">Restart</button>
     </div>
 
+    <script src="./js/boss.js"></script>
     <script src="./js/medPack.js"></script>
     <script src="./js/clouds.js"></script>
-    <script src="./js/boss.js"></script>
+    <script src="./js/bossScreen.js"></script>
     <script src="./js/mobs.js"></script>
     <script src="./js/innocent.js"></script>
     <script src="./js/heroes.js"></script>

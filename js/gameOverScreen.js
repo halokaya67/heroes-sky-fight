@@ -16,6 +16,7 @@ function drawGameOverScreen() {
             }
         }
     }
+    
     counter++;    
 
     if (isWon === true) {
