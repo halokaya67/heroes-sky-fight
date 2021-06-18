@@ -67,7 +67,8 @@ function drawFireballCollision() {
                 if (fires[i].y + fire.height >= positionY && fires[i].y <= positionY + boyGreen.height) {
                     if (heroHp > 0) {
                         heroHp -= 50;
-                        fires[i].status = 0;                         heroHurtAudio.play();
+                        fires[i].status = 0;                         
+                        heroHurtAudio.play();
                     }
                 }
             }
