@@ -41,10 +41,19 @@ function drawBossHp() {
     } else if (bossHp <= 25) {
         ctx.fillStyle = '#c32f27';
     }
-    ctx.fillRect(150, 70, (bossHp * 10), 30);
+    ctx.fillRect(250, 70, (bossHp * 10), 30);
+    ctx.closePath();
 
+    ctx.beginPath();
     ctx.font = 'bolder 44px Annie Use Your Telescope';
-    ctx.fillText(`Very Bad Crazy Vision`, 475, 50);
+    ctx.fillStyle = '#4d194d';
+    ctx.fillText(`Very Bad Crazy Vision`, 580, 50);
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.strokeStyle = '#4d194d';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(250, 70, 1000, 30);
     ctx.closePath();
 }
 

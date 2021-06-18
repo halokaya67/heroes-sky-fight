@@ -49,9 +49,18 @@ function drawHeroHp() {
     } else if (heroHp <= 25) {
         ctx.fillStyle = '#c32f27';
     }
-    ctx.fillRect(20, 130, (heroHp * 2), 30);
+    ctx.fillRect(20, 20, (heroHp * 2), 30);
+    ctx.closePath();
 
+    ctx.beginPath();
     ctx.font = 'bolder 44px Annie Use Your Telescope';
-    ctx.fillText(`Score: ${score}`, 20, 200);
+    ctx.fillStyle = '#4d194d';
+    ctx.fillText(`Score: ${score}`, 20, 100);
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.strokeStyle = '#4d194d';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(20, 20, 200, 30);
     ctx.closePath();
 }

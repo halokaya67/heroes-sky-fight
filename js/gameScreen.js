@@ -9,21 +9,7 @@ function drawGameScreen() {
 
     drawClouds();
 
-    ctx.beginPath();
-    if (heroHp <= 100 && heroHp > 75) {
-        ctx.fillStyle = '#38b000';
-    } else if (heroHp <= 75 && heroHp > 50) {
-        ctx.fillStyle = '#f7b538';
-    } else if (heroHp <= 50 && heroHp > 25) {
-        ctx.fillStyle = '#d8572a';
-    } else if (heroHp <= 25) {
-        ctx.fillStyle = '#c32f27';
-    }
-    ctx.fillRect(20, 20, (heroHp * 3), 30);
-
-    ctx.font = 'bolder 44px Annie Use Your Telescope';
-    ctx.fillText(`Score: ${score}`, 20, 90);
-    ctx.closePath();
+    drawHeroHp();
 
     drawHeroes();
 
