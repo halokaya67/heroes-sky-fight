@@ -1,10 +1,10 @@
 function drawMobs() {
-    for (let i = 0; i < mobs.length; i++) {
-        ctx.drawImage(mob, mobs[i].x, mobs[i].y)
-        mobs[i].y += mobSpeed;
+    mobs.forEach((elem, index) => {
+        ctx.drawImage(mob, mobs[index].x, mobs[index].y)
+        mobs[index].y += mobSpeed;
 
-        if (mobs[i].y > canvas.height || mobs[i].status === 0) {
-            mobs[i] = {
+        if (mobs[index].y > canvas.height || mobs[index].status === 0) {
+            mobs[index] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)),
                 y: -Math.floor(Math.random() * 100) - 950,
                 status: 1
@@ -12,54 +12,28 @@ function drawMobs() {
         }
 
         if (pickedHero === 'boyGreen') {
-            if (mobs[i].x + mob.width >= positionX && mobs[i].x <= positionX + boyGreen.width) {
-                if (mobs[i].y + mob.height >= positionY && mobs[i].y <= positionY + boyGreen.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 20;
-                        mobs[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByMobs(boyGreen, index)
         } else if (pickedHero === 'boyPurple') {
-            if (mobs[i].x + mob.width >= positionX && mobs[i].x <= positionX + boyPurple.width) {
-                if (mobs[i].y + mob.height >= positionY && mobs[i].y <= positionY + boyPurple.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 20;
-                        mobs[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByMobs(boyPurple, index)
         } else if (pickedHero === 'girlPink') {
-            if (mobs[i].x + mob.width >= positionX && mobs[i].x <= positionX + girlPink.width) {
-                if (mobs[i].y + mob.height >= positionY && mobs[i].y <= positionY + girlPink.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 20;
-                        mobs[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByMobs(girlPink, index)
         } else if (pickedHero === 'girlYellow') {
-            if (mobs[i].x + mob.width >= positionX && mobs[i].x <= positionX + girlYellow.width) {
-                if (mobs[i].y + mob.height >= positionY && mobs[i].y <= positionY + girlYellow.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 20;
-                        mobs[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByMobs(girlYellow, index)
         } 
         
-        if (isFired && magics.x <= mobs[i].x + mob.width && magics.x + magic.width >= mobs[i].x) {
-            if (magics.y <= mobs[i].y + mob.height && magics.y + magic.height >= mobs[i].y) {
-                mobs[i].status = 0;
-                magics.status = 0;
-                enemyHurtAudio.play();
-                score += 20
-            }
+        if (isFired && magics.x <= mobs[index].x + mob.width && magics.x + magic.width >= mobs[index].x && magics.y <= mobs[index].y + mob.height && magics.y + magic.height >= mobs[index].y) {
+            mobs[index].status = 0;
+            magics.status = 0;
+            enemyHurtAudio.play();
+            score += 20
         }
+    })
+}
+
+function gettingHitByMobs(character, index) {
+    if (mobs[index].x + mob.width >= positionX && mobs[index].x <= positionX + character.width && mobs[index].y + mob.height >= positionY && mobs[index].y <= positionY + character.height && heroHp > 0) {
+        heroHp -= 20;
+        mobs[index].status = 0;
+        heroHurtAudio.play();
     }
-}''
+}

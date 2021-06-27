@@ -115,7 +115,7 @@ let bosses = [
 ]
 
 let magics = {
-    x: (positionX + 25), 
+    x: (positionX + 30), 
     y: (positionY - 10)
 }
 

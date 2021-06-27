@@ -60,36 +60,26 @@ function drawGameOverScreen() {
     intervalId = requestAnimationFrame(drawGameOverScreen);
 }
 
+function saveHighScore(index) {
+    name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
+    highscores.splice(index, 0 , {
+        name: name.slice(0, 7).toUpperCase(),
+        score: score
+    });
+    highscores.pop();
+};
+
 function updateHighScores() {
     let name;
-    if (score > highscores[0].score) {
-        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
-        highscores.splice(0, 0 , {
-            name: name.slice(0, 7).toUpperCase(),
-            score: score
-        });
-        highscores.pop();
-    } else if (score > highscores[1].score) {
-        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
-        highscores.splice(1, 0 , {
-            name: name.slice(0, 7).toUpperCase(),
-            score: score
-        });
-        highscores.pop();
-    } else if (score > highscores[2].score) {
-        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
-        highscores.splice(2, 0 , {
-            name: name.slice(0, 7).toUpperCase(),
-            score: score
-        });
-        highscores.pop();
-    } else if (score > highscores[3].score) {
-        name = prompt("Cool! That's a new high score people! Let us know your name fighter?");
-        highscores.splice(3, 0 , {
-            name: name.slice(0, 7).toUpperCase(),
-            score: score
-        });
-        highscores.pop();
+
+    if (score >= highscores[0].score) {
+        saveHighScore(0);
+    } else if (score >= highscores[1].score) {
+        saveHighScore(1);
+    } else if (score >= highscores[2].score) {
+        saveHighScore(2);
+    } else if (score >= highscores[3].score) {
+        saveHighScore(3);
     }
 
     highScoreList.innerHTML = ''
@@ -99,4 +89,4 @@ function updateHighScores() {
         li.innerHTML = `${elem.name} - ${elem.score}`;
         highScoreList.appendChild(li);
     })
-}
+};

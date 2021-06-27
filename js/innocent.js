@@ -1,10 +1,10 @@
 function drawInnocent() {
-    for (let i = 0; i < innocents.length; i++) {
-        ctx.drawImage(innocent, innocents[i].x, innocents[i].y)
-        innocents[i].y += medPackSpeed;
+    innocents.forEach((elem, index) => {
+        ctx.drawImage(innocent, innocents[index].x, innocents[index].y)
+        innocents[index].y += medPackSpeed;
 
-        if (innocents[i].y > canvas.height || innocents[i].status === 0) {
-            innocents[i] = {
+        if (innocents[index].y > canvas.height || innocents[index].status === 0) {
+            innocents[index] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)), 
                 y: -2500,
                 status: 1
@@ -12,53 +12,25 @@ function drawInnocent() {
         }
 
         if (pickedHero === 'boyGreen') {
-            if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
-                if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
-                    innocents[i].status = 0; 
-                    mobSpeed += 1;
-                    innocentCatch++;
-                    controlSpeed += 1;
-                    score += 50;
-                    medPackSpeed += 2;
-                    innocentSaveAudio.play();
-                }
-            }
+            pickUpInnocent(boyGreen, index);
         } else if (pickedHero === 'boyPurple') {
-            if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
-                if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
-                    innocents[i].status = 0;
-                    mobSpeed += 1;
-                    innocentCatch++;
-                    controlSpeed += 1;
-                    score += 50;
-                    medPackSpeed += 2;
-                    innocentSaveAudio.play();
-                }
-            }
+            pickUpInnocent(boyPurple, index);
         } else if (pickedHero === 'girlPink') {
-            if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
-                if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
-                    innocents[i].status = 0;
-                    mobSpeed += 1;
-                    innocentCatch++;
-                    controlSpeed += 1;
-                    score += 50;
-                    medPackSpeed += 2;
-                    innocentSaveAudio.play();
-                }
-            }
+            pickUpInnocent(girlPink, index);
         } else if (pickedHero === 'girlYellow') {
-            if (innocents[i].x + innocent.width >= positionX && innocents[i].x <= positionX + boyGreen.width) {
-                if (innocents[i].y + innocent.height >= positionY && innocents[i].y <= positionY + boyGreen.height) {
-                    innocents[i].status = 0;
-                    mobSpeed += 1;
-                    innocentCatch++;
-                    controlSpeed += 1;
-                    score += 50;
-                    medPackSpeed += 2;
-                    innocentSaveAudio.play();
-                }
-            }
+            pickUpInnocent(girlYellow, index);
         }
+    })
+}
+
+function pickUpInnocent(character, index) {
+    if (innocents[index].x + innocent.width >= positionX && innocents[index].x <= positionX + character.width && innocents[index].y + innocent.height >= positionY && innocents[index].y <= positionY + character.height) {
+        innocents[index].status = 0; 
+        mobSpeed += 1;
+        innocentCatch++;
+        controlSpeed += 1;
+        score += 50;
+        medPackSpeed += 2;
+        innocentSaveAudio.play();
     }
 }

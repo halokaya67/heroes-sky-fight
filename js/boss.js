@@ -10,21 +10,19 @@ function drawBossCollision() {
             bossSpeed = -bossSpeed;
         }
 
-        if (isFired && magics.x <= bosses[i].x + boss.width && magics.x + magic.width >= bosses[i].x) {
-            if (magics.y <= bosses[i].y + boss.height && magics.y + magic.height >= bosses[i].y) {
-                magics.status = 0;
-                score += 100;
-                bossHp -= 20;
-                bossFireSpeed += 1;
-                medPackSpeed += 2;
-                controlSpeed += 1;
-                enemyHurtAudio.play();
+        if (isFired && magics.x <= bosses[i].x + boss.width && magics.x + magic.width >= bosses[i].x && magics.y <= bosses[i].y + boss.height && magics.y + magic.height >= bosses[i].y) {
+            magics.status = 0;
+            score += 100;
+            bossHp -= 20;
+            bossFireSpeed += 1;
+            medPackSpeed += 2;
+            controlSpeed += 1;
+            enemyHurtAudio.play();
                 
-                if (bossSpeed < 0) {
-                    bossSpeed -= 2;
-                } else {
-                    bossSpeed += 2;
-                }
+            if (bossSpeed < 0) {
+                bossSpeed -= 2;
+            } else {
+                bossSpeed += 2;
             }
         }
     }
@@ -58,13 +56,13 @@ function drawBossHp() {
 }
 
 function drawFireballCollision() {
-    for (let i = 0; i <fires.length; i++) {
-        ctx.drawImage(fire, fires[i].x, fires[i].y)
-        fires[i].y += bossFireSpeed;
+    fires.forEach((elem, index) => {
+        ctx.drawImage(fire, fires[index].x, fires[index].y)
+        fires[index].y += bossFireSpeed;
         fireballAudio.play();
 
-        if (fires[i].y > canvas.height || fires[i].status === 0) {
-            fires[i] = {
+        if (fires[index].y > canvas.height || fires[index].status === 0) {
+            fires[index] = {
                 x: Math.floor(Math.random() * (canvas.width - 200)),
                 y: -Math.floor(Math.random() * 100) - 950,
                 status: 1
@@ -72,45 +70,21 @@ function drawFireballCollision() {
         }
 
         if (pickedHero === 'boyGreen') {
-            if (fires[i].x + fire.width >= positionX && fires[i].x <= positionX + boyGreen.width) {
-                if (fires[i].y + fire.height >= positionY && fires[i].y <= positionY + boyGreen.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 50;
-                        fires[i].status = 0;                         
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByBoss(boyGreen, index)
         } else if (pickedHero === 'boyPurple') {
-            if (fires[i].x + fire.width >= positionX && fires[i].x <= positionX + boyPurple.width) {
-                if (fires[i].y + fire.height >= positionY && fires[i].y <= positionY + boyPurple.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 50;
-                        fires[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByBoss(boyPurple, index)
         } else if (pickedHero === 'girlPink') {
-            if (fires[i].x + fire.width >= positionX && fires[i].x <= positionX + girlPink.width) {
-                if (fires[i].y + fire.height >= positionY && fires[i].y <= positionY + girlPink.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 50;
-                        fires[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByBoss(girlPink, index)
         } else if (pickedHero === 'girlYellow') {
-            if (fires[i].x + fire.width >= positionX && fires[i].x <= positionX + girlYellow.width) {
-                if (fires[i].y + fire.height >= positionY && fires[i].y <= positionY + girlYellow.height) {
-                    if (heroHp > 0) {
-                        heroHp -= 50;
-                        fires[i].status = 0;
-                        heroHurtAudio.play();
-                    }
-                }
-            }
+            gettingHitByBoss(girlYellow, index)
         } 
+    })
+}
+
+function gettingHitByBoss(character, index) {
+    if (fires[index].x + fire.width >= positionX && fires[index].x <= positionX + character.width && fires[index].y + fire.height >= positionY && fires[index].y <= positionY + character.height && heroHp > 0) {
+        heroHp -= 50;
+        fires[index].status = 0;                         
+        heroHurtAudio.play();
     }
 }

@@ -104,12 +104,10 @@ h3 {
 }
 
 #bossBg {
-    transform: rotate(300deg);
     height: 400px;
 }
 
 #mobBg {
-    transform: rotate(300deg);
     height: 200px;
 }
 
